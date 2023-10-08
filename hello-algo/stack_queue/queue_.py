@@ -6,21 +6,26 @@ from collections import deque
 que = deque()
 
 # 元素入队
-que.append(1)
+que.append(1)  # 添加至队尾
 que.append(3)
 que.append(2)
 que.append(5)
 que.append(4)
+que.appendleft(6) # 添加至队首
+que.appendleft(7)
 print("Queue: ", que)
 
-# 访问队首元素
-front: int = que[0]
+front: int = que[0]  # 队首元素
+rear : int = que[-1] # 队尾元素
 print("Front: ", front)
-print("After front: ", que)
+print("Rear : ", rear)
+print("After: ", que)
 
 # 元素出队
-pop: int = que.popleft()
-print("Pop: ", pop)
+pop_front = que.popleft() # 队首元素出队
+pop_rear  = que.pop()     # 队尾元素出队
+print("pop front: ", pop_front)
+print("pop rear : ", pop_rear)
 print("After pop: ", que)
 
 # 获取队列的长度
