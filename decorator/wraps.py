@@ -4,7 +4,7 @@ def a_decorator(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         """A wrapper function"""
-        print('In wrapper...')
+        print('In wrapper... Function name: ', func.__name__)
         # Extend some capabilities of func
         func(*args, **kwargs)
     return wrapper

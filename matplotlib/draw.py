@@ -10,7 +10,8 @@ class Record:
 def comp(rec1, rec2):
     return rec1.n_execution - rec2.n_execution
 
-f = open('dev_full.csv', 'r')
+#f = open('dev_full.csv', 'r')
+f = open('dev_session_full.csv', 'r')
 line = f.readline()
 n_lines = 0
 records_dict = {}
