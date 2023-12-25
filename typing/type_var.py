@@ -13,4 +13,7 @@ foo([1,2,3]) # error: Value of type variable "T" of "foo" cannot be "List[int]" 
 num1: T = 1
 num2: T = "456"
 num3: T = [4,5,6]
+print(num1)
+print(num2)
+print(num3)
 print(t.TYPE_CHECKING)

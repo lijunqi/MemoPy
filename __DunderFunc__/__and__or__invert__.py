@@ -1,5 +1,6 @@
 """
-The magic methods __and__, __or__ and __invert__ are used to override the operators a & b, a | b and ~a respectively. 
+The magic methods __and__, __or__ and __invert__ are used to
+override the operators a & b, a | b and ~a respectively. 
 """
 
 class A():
