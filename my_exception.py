@@ -110,3 +110,5 @@ if __name__ == "__main__":
             print("exc is HisConnectException.")
         else:
             print("exc is NOT HisConnectException.")
+    finally:
+        print("In finally, exc = ", exc)
