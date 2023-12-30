@@ -1,29 +1,36 @@
+from typing import Any
+
 
 class MyConnectException(Exception):
     code = 1
     info = "[My connect exception]"
 
-    def __init__(self, msg: object="") -> None:
+    def __init__(self, msg: Any = "") -> None:
         self.msg = msg
 
     def __str__(self):
         return f"{self.info}{str(self.msg)}"
 
+
 class YourConnectException(MyConnectException):
     code = 2
     info = "[Your connect exception]"
+
 
 class HisConnectException(MyConnectException):
     code = 3
     info = "[His connect exception]"
 
+
 class SomeParams:
     def __init__(self) -> None:
         self.data = 123456
 
+
 def foo1():
     print("Go foo1.")
     raise MyConnectException("DB connect failed")
+
 
 def foo2():
     print("Go foo2.")
@@ -35,24 +42,28 @@ def foo2():
         }
     })
 
+
 def foo3():
     print("Go foo3.")
     raise YourConnectException("DB connect failed")
+
 
 def foo4():
     print("Go foo4.")
     raise YourConnectException({
         'a': 321,
-        'b': "fdsa",
+        'b': "f_dsa",
         'c': {
             'd': 654
         }
     })
 
+
 def foo5():
     print("Go foo5.")
     sp = SomeParams()
     raise YourConnectException(sp)
+
 
 if __name__ == "__main__":
     try:
@@ -111,4 +122,4 @@ if __name__ == "__main__":
         else:
             print("exc is NOT HisConnectException.")
     finally:
-        print("In finally, exc = ", exc)
+        print("In finally, Name 'exc' can be undefined")
