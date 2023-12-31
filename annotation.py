@@ -31,8 +31,8 @@ f(3, 5)
 def kinetic_energy(m:'in KG', v:'in M/S')->'Joules': 
     return 1/2*m*v**2
 
-print(kinetic_energy.__annotations__)
-print(kinetic_energy.__annotations__['m'])
+print("kinetic_energy.__annotations__:", kinetic_energy.__annotations__)
+print("kinetic_energy.__annotations__['m']:", kinetic_energy.__annotations__['m'])
 for k, v in kinetic_energy.__annotations__.items():
     print('k = %s, v = %s' %(k, v))
 
