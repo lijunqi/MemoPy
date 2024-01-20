@@ -6,7 +6,7 @@ import typing as t
 # * 类型别名:
 # * 是使用 type 语句来定义的，它将创建一个 TypeAliasType 的实例.
 # * 在这个示例中，Vector 和 list[float] 将被静态类型检查器等同处理
-type Vector = list[float]
+Vector = list[float]
 
 def scale(scalar: float, vector: Vector) -> Vector:
     return [scalar * num for num in vector]
@@ -26,7 +26,7 @@ def foo(x: T) -> None:
 
 foo(1)
 foo("123")
-foo([1,2,3]) # error: Value of type variable "T" of "foo" cannot be "List[int]"  [type-var]
+#! foo([1,2,3]) # error: Value of type variable "T" of "foo" cannot be "List[int]"  [type-var]
 
 num1: T = 1
 num2: T = "456"
