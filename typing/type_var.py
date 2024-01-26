@@ -36,6 +36,9 @@ print(num2)
 print(num3)
 print(t.TYPE_CHECKING)
 
+# * Using type variables as parameters
+def remove_falsey_from_list(items: list[T]) -> list[T]:
+    return [item for item in items if item]
 
 # * #####################
 # * 函数: 或其他 callable 对象
@@ -66,3 +69,32 @@ make_new_user(ProUser)   # Also OK: ``type[ProUser]`` is a subtype of ``type[Use
 make_new_user(TeamUser)  # Still fine
 make_new_user(User())    # Error: expected ``type[User]`` but got ``User``
 make_new_user(int)       # Error: ``type[int]`` is not a subtype of ``type[User]``
+
+
+import math
+
+C = t.TypeVar('C', bound='Circle')
+
+class Circle:
+    """An abstract circle"""
+
+    def __init__(self, radius: float) -> None:
+        self.radius = radius
+
+    # Use a type variable to show that the return type
+    # will always be an instance of whatever ``cls`` is
+    @classmethod
+    def with_circumference(cls: type[C], circumference: float) -> C:
+        """Create a circle with the specified circumference"""
+        radius = circumference / (math.pi * 2)
+        return cls(radius)
+
+
+class Tire(Circle):
+    """A specialised circle (made out of rubber)"""
+
+    MATERIAL = 'rubber'
+
+
+c = Circle.with_circumference(3)  # Ok, variable 'c' has type 'Circle'
+t = Tire.with_circumference(4)  # Ok, variable 't' has type 'Tire' (not 'Circle')
