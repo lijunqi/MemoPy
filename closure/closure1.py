@@ -20,7 +20,7 @@
 def study_time():           # 外层函数
     time = 0                # 外层函数变量
     def insert_time(min):   # 内部函数
-        nonlocal time
+        nonlocal time       #! 关键
         time = time + min
         return time
     return insert_time
