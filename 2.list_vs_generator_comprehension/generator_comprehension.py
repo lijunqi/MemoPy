@@ -40,5 +40,5 @@ def foo2(data):
     return list(iter_foo(data))
 
 my_data = [1,2,3]
-print foo1(my_data)
-print foo2(my_data)
+print(foo1(my_data))
+print(foo2(my_data))
