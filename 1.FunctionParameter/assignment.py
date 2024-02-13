@@ -23,6 +23,31 @@ c = 257
 print(id(c) == id(257)) # False
 
 
+###############################################################################
+
+# * a and b are Parameters of my_func. a and b are local to my_func
+def my_func(a, b):
+    a = 123
+    b = 456
+
+# * x and y are Arguments of my_func
+# * x and y are passed by reference, i.e. pass the memory address
+x = 10
+y = 'a'
+my_func(x, y)
+print("x = ", x)
+print("y = ", y)
+
+
+# ! Positional Arguments
+# * If a positional parameter is defined with a default value,
+# * EVERY positional parameter after it MUST also be given a default value
+
+# ! Keyword Arguments
+# * All arguments after the first named(keyword) argument, MUST be named too.
+# * Default arguments may still be omitted.
+
+
 """
 1. 切片操作和工厂方法list方法都是浅拷贝, 只是拷贝了最外围的对象本身, 内部的元素都只是拷贝了一个引用而已。
 2. 利用copy中的deepcopy方法是深拷贝, 外围和内部元素都进行了拷贝对象本身, 而不是引用。
@@ -63,7 +88,9 @@ Jack[1][1] = 20
 print(Tom, Jack, June)
 
 
+###############################################################################
 # * Unpacking
+###############################################################################
 print("========= Unpacking =========")
 lst = [1,2,3,4,5,6]
 a, *b = lst     # 等同于: a, b = lst[0], lst[1:]
