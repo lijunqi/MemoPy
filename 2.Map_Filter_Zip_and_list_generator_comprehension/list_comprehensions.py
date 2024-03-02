@@ -1,3 +1,6 @@
+"""
+* [ <expression> for <varname> in <iterable> if <expression2> ]
+"""
 
 # equals
 # >>> squares = []

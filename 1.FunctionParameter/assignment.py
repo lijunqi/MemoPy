@@ -98,10 +98,10 @@ print(f"a = {a}, b = {b}")
 
 # The * operator(the rest) can only be used ONCE in the LHS an unpacking assignment
 a, b, *c, d = lst
-print(f"a = {a}, b = {b}, c = {c}, d = {d}")
+print(f"a = {a}, b = {b}, c = {c}, d = {d}") # a = 1, b = 2, c = [3, 4, 5], d = 6
 
 a, b, *c, d = 'python'
-print(f"a = {a}, b = {b}, c = {c}, d = {d}")
+print(f"a = {a}, b = {b}, c = {c}, d = {d}") # a = p, b = y, c = ['t', 'h', 'o'], d = n
 
 l1 = [1,2,3]
 l2 = [4,5,6]

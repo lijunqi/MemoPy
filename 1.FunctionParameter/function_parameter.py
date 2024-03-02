@@ -1,7 +1,7 @@
 """
 ! Positional arguments
     ! may have default values
-    *args: collects, and exhausts remaining positional arguments
+    *args: collects, and Exhausts Remaining positional arguments
     *: indicates no more positional arguments(effectively exhausts)
 
 ! Keyword arguments
