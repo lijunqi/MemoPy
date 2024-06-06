@@ -13,7 +13,7 @@ d = add(5,6)
 d(9)
 d(1)
 for i in d.__closure__:
-    print(i.cell_contents)
+    print("d __closure__:", i.cell_contents)
 
 def foo():
     print("this is foo.")
