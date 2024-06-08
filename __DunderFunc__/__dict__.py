@@ -20,6 +20,9 @@ class Result:
 
 a = A("kuku", "123.456")
 print("a dict: ", a.__dict__)
+# Output: no class member "class_var"
+# {'a': 1, 'b': 'hello', 'c': {'name': 'kaka', 'age': 10}, 'd': <__main__.Result object at 0x01CA63F0>}
+
 print("A dict: ", A.__dict__)
 print("a.a = ", getattr(a, 'a'))
 print("a.b = ", getattr(a, 'b'))
