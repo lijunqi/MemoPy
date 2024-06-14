@@ -22,37 +22,22 @@ class B(A):
 def main():
     # * 1
     a = A(456)
-    if isinstance(a, MyBase):
-        print("a is instance of MyBase.")
+    print(f"a is instance of MyBase: {isinstance(a, MyBase)}") # True
     
-    if type(a) == MyBase:
-        print("type(a) == MyBase")
-    else:
-        print("type(a) != MyBase")
-
     # * 2
     b = B(789)
-    if isinstance(b, MyBase):
-        print("b is instance of MyBase.")
-    if isinstance(b, A):
-        print("b is instance of A.")
-    if isinstance(b, B):
-        print("b is instance of B.")
+    print(f"b is instance of MyBase: {isinstance(b, MyBase)}") # True
+    print(f"b is instance of A: {isinstance(b, A)}") # True
+    print(f"b is instance of B: {isinstance(b, B)}") # True
+    print(f"type(a) == A: {type(a) == A}") # True
+    print(f"type(b) == B: {type(b) == B}") # True
 
-    if type(b) == MyBase:
-        print("type(b) == MyBase")
-    else:
-        print("type(b) != MyBase")
+    print("-------------------------------------")
+    print(f"type(a) == MyBase: {type(a) == MyBase}") # False
+    print(f"type(b) == MyBase: {type(b) == MyBase}") # False
+    print(f"type(b) == A: {type(b) == A}") # False
 
-    if type(b) == A:
-        print("type(b) == A")
-    else:
-        print("type(b) != A")
 
-    if type(b) == B:
-        print("type(b) == B")
-    else:
-        print("type(b) != B")
 
     # * 3
 
