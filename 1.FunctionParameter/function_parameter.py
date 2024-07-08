@@ -1,13 +1,12 @@
 """
-! Positional arguments
-    ! may have default values
+! Positional arguments (may have default values)
     *args: collects, and Exhausts Remaining positional arguments
-    *: indicates no more positional arguments(effectively exhausts)
+    *: indicates no more positional arguments(effectively exhausts):
+       All following arguments are keyword-only arguments. That is, they can only be provided using their name, not as positional argument.
 
-! Keyword arguments
-    ! may have default values
+! Keyword arguments (may have default values)
     ! after positional arguments have been exhausted
-    **kwargs: collects any remaining keyword arguments
+    **kwargs: collects any REMAINING keyword arguments
 
         a, b, c=10   *args/*   kw1, kw2=100   **kwargs
         ----------
@@ -36,7 +35,8 @@ def func(*args, **kwargs)
 """
 
 def func(*args, **kwargs):
-    pass
+    print('args = ', args)
+    print('kwargs = ', kwargs)
 
 
 func(1, 2, a=10, b=20)

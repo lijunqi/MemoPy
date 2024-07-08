@@ -118,7 +118,8 @@ d3 = {'h': 5, 'o': 6, 'n': 7} # key 'h' in both d2 and d3
 print("[*d1, *d2, *d3] =", [*d1, *d2, *d3]) # ['p', 'y', 't', 'h', 'h', 'o', 'n']
 print("{*d1, *d2, *d3} =", {*d1, *d2, *d3}) # {'n', 'y', 'h', 'o', 't', 'p'}    Order is NOT guaranteed
 
-# Using **, ** operator can NOT be used in the LHS of an assignment
+# ====== Using ** ======
+# ~ ** operator can NOT be used in the LHS of an assignment
 d = {**d1, **d2, **d3}
 print("{**d1, **d2, **d3} =", d) # {'p': 1, 'y': 2, 't': 3, 'h': 5, 'o': 6, 'n': 7}
                                  # ! 'h' in d3 overwrite the first value of 'h' in d2

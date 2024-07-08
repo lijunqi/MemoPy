@@ -24,7 +24,6 @@ def main():
     a = A(456)
     print(f"a is instance of MyBase: {isinstance(a, MyBase)}") # True
     
-    # * 2
     b = B(789)
     print(f"b is instance of MyBase: {isinstance(b, MyBase)}") # True
     print(f"b is instance of A: {isinstance(b, A)}") # True
@@ -33,6 +32,8 @@ def main():
     print(f"type(b) == B: {type(b) == B}") # True
 
     print("-------------------------------------")
+
+    # * 2
     print(f"type(a) == MyBase: {type(a) == MyBase}") # False
     print(f"type(b) == MyBase: {type(b) == MyBase}") # False
     print(f"type(b) == A: {type(b) == A}") # False
