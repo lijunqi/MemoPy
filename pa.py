@@ -6,4 +6,4 @@ class MyClass:
 o = MyClass()
 #print(o.__secret)
 # name mangling
-print(o._MyClass__secret)
+print("secret is ", o._MyClass__secret)
