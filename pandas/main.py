@@ -1,14 +1,23 @@
 import pandas as pd
 
 
-def foo():
-    # making data frame from csv file 
-    data = pd.read_csv("nba.csv", index_col="Name") 
+def csv_reader():
+    # making data frame from csv file
+    df = pd.read_csv("nba.csv", index_col="Name")
     
-    # retrieving row by loc method 
-    out = data.loc["Avery Bradley"] 
-    out = data.loc["asdf"] 
+    # retrieving row by loc method
+    out = df.loc["Avery Bradley"]
+    #out = df.loc["asdf"] # All NAN
     print(out)
+    print("df.columns:", df.columns)
+    print("nba info:", df.info())
+
+def revenue():
+    df = pd.read_csv("revenue.csv", index_col="Date")
+    print("revenue.sum: ", df.sum())
+    print("revenue.sum(index): ", df.sum(axis="index"))
+    print("revenue.sum(columns): ", df.sum(axis="columns"))
+    print("sum all: ", df.sum(axis="columns").sum())
 
 def pd_categorical():
     s1 = ['a', 'a', 'b', 'd', 'c']
@@ -43,6 +52,9 @@ def main():
 
 
 if __name__ == "__main__":
-    #foo()
-    pd_categorical()
+    s = pd.Series([1, 2, 3])
+    print("s.sum = ", s.sum())
+    #csv_reader()
+    revenue()
+    #pd_categorical()
     #main()
