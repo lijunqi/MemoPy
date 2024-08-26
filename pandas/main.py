@@ -1,5 +1,13 @@
 import pandas as pd
+from functools import wraps
 
+def read_nba(func):
+    @wraps(func)
+    def inner(*args, **kwargs):
+        nba = pd.read_csv("nba.csv")
+        print(f"========= {func.__name__} =========")
+        func(nba)
+    return inner
 
 def csv_reader():
     # making data frame from csv file
@@ -49,6 +57,23 @@ def main():
     print("=== After insert NewNum col:\n", nba)
     nba["DoubleSalary"] = nba["Salary"]*2
     print("=== After adding double salary col:\n", nba)
+
+    drop_nan()
+    fill_nan()
+
+@read_nba
+def drop_nan(nba={}):
+    # * Drop NAN
+    #nba.dropna(how="any") # drop this row if has any NAN
+    #nba.dropna(how="all") # drop this row if all col are NAN
+    res = nba.dropna(subset=["College", "Salary"]) # drop this row if "College" OR "Salary" column is NAN
+    print(res.tail(6))
+
+@read_nba
+def fill_nan(nba={}):
+    # * Fill NAN
+    nba["Salary"] = nba["Salary"].fillna(0)
+    print(nba.tail(5))
 
 
 def pd_categorical():
