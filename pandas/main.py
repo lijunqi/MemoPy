@@ -58,8 +58,17 @@ def main():
     nba["DoubleSalary"] = nba["Salary"]*2
     print("=== After adding double salary col:\n", nba)
 
+    n_unique()
     drop_nan()
     fill_nan()
+
+
+@read_nba
+def n_unique(nba={}):
+    # * how many unique values. Reduce memory with "category"
+    print("N unique:\n", nba["Team"].nunique())
+    nba["Position"] = nba["Position"].astype("category")
+
 
 @read_nba
 def drop_nan(nba={}):
@@ -68,6 +77,7 @@ def drop_nan(nba={}):
     #nba.dropna(how="all") # drop this row if all col are NAN
     res = nba.dropna(subset=["College", "Salary"]) # drop this row if "College" OR "Salary" column is NAN
     print(res.tail(6))
+
 
 @read_nba
 def fill_nan(nba={}):
