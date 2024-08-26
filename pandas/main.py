@@ -12,12 +12,44 @@ def csv_reader():
     print("df.columns:", df.columns)
     print("nba info:", df.info())
 
-def revenue():
+
+def main():
+    # * Sum method
     df = pd.read_csv("revenue.csv", index_col="Date")
     print("revenue.sum: ", df.sum())
     print("revenue.sum(index): ", df.sum(axis="index"))
     print("revenue.sum(columns): ", df.sum(axis="columns"))
     print("sum all: ", df.sum(axis="columns").sum())
+
+    # * Select one column from a DataFrame
+    print("revenue Miami:")
+    print(df.Miami) # NOT work if col has space
+    print("revenue New York:")
+    print(df["New York"])
+
+    # ~ it's reference. df will be changed if we change it here
+    new_york_series = df["New York"]
+    new_york_series.iloc[0] = 123
+    print("=== refer:\n", df.head(1)) # New York[0] = 123
+
+    # ~ full copy
+    new_york_copy = df["New York"].copy()
+    new_york_copy.iloc[0] = 456
+    print("=== after copy:\n", df.head(1)) # New York[0] = 123
+
+    # * Select multiple columns from a DataFrame
+    nba = pd.read_csv("nba.csv")
+    df_nt_copy = nba[["Name", "Team"]] # this is a copy of nba
+    print("=== df_nt_copy:\n", df_nt_copy)
+
+    # * Add new column to a DataFrame
+    nba["Sport"] = "Basketball" # Add "Sport" column at the end of other columns
+    print("=== After adding Sport col:\n", nba)
+    nba.insert(loc=3, column="NewNum", value=123)
+    print("=== After insert NewNum col:\n", nba)
+    nba["DoubleSalary"] = nba["Salary"]*2
+    print("=== After adding double salary col:\n", nba)
+
 
 def pd_categorical():
     s1 = ['a', 'a', 'b', 'd', 'c']
@@ -42,19 +74,16 @@ def pd_categorical():
     print('ss2.categories:', ss2.categories)
 
 
-def main():
-    old_report = pd.read_csv('summary.csv')
-    old_report["summary"] = old_report["summary"].astype(str)
-    old_report["ExceptionalRational"] = old_report["ExceptionalRational"].astype(str)
-    old_report.loc[(old_report["summary"] == "nan"), "summary"] = ""
-    old_report.loc[(old_report["ExceptionalRational"] == "nan"), "ExceptionalRational"] = ""
-    print(old_report)
-
 
 if __name__ == "__main__":
     s = pd.Series([1, 2, 3])
     print("s.sum = ", s.sum())
+
+    print("####################")
     #csv_reader()
-    revenue()
+
+    print("####################")
+    main()
+
+    print("####################")
     #pd_categorical()
-    #main()
