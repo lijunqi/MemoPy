@@ -54,6 +54,7 @@ def func1(a, b, *, d, **kwargs):
     print('a =', a)
     print('b =', b)
     print('d =', d)
+    # ! x, y in kwargs: kwargs = {'x': 100, 'y': 200}
     print('kwargs =', kwargs)
 
 func1(1, 2, x=100, y=200, d=20)
