@@ -2,7 +2,8 @@
 ! Positional arguments (may have default values)
     *args: collects, and Exhausts Remaining positional arguments
     *: indicates no more positional arguments(effectively exhausts):
-       All following arguments are keyword-only arguments. That is, they can only be provided using their name, not as positional argument.
+       All following arguments are keyword-only arguments.
+       That is, they can only be provided using their name, not as positional argument.
 
 ! Keyword arguments (may have default values)
     ! after positional arguments have been exhausted
@@ -58,3 +59,20 @@ def func1(a, b, *, d, **kwargs):
     print('kwargs =', kwargs)
 
 func1(1, 2, x=100, y=200, d=20)
+
+
+print("========= Call func2(1, 2, 3, 4, x=100, y=200, d=20) =========")
+def other_func(a, b):
+    print('other func, a =', a)
+    print('other func, b =', b)
+    print('type b =', type(b))
+
+def func2(*args, **kwargs):
+    print('args =', args)
+    print('kwargs =', kwargs)
+    print('x = ', kwargs.get('x'))
+    print('y = ', kwargs.get('y'))
+    other_func(1, args)
+    other_func(2, kwargs)
+
+func2(1, 2, 3, 4, x=100, y=200, z=300)
