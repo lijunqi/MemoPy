@@ -9,9 +9,9 @@ def count():
     return fs
 
 f1, f2, f3 = count()
-print("f1() =", f1())
-print("f2() =", f2())
-print("f3() =", f3())
+print("f1() =", f1()) # 9
+print("f2() =", f2()) # 9
+print("f3() =", f3()) # 9
 
 print("=====================")
 """
@@ -30,6 +30,6 @@ def count2():
     return fs
 
 f4, f5, f6 = count2()
-print("f4() =", f4())
-print("f5() =", f5())
-print("f6() =", f6())
+print("f4() =", f4()) # 1
+print("f5() =", f5()) # 4
+print("f6() =", f6()) # 9
