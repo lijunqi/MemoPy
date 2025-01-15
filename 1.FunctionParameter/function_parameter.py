@@ -76,3 +76,16 @@ def func2(*args, **kwargs):
     other_func(2, kwargs)
 
 func2(1, 2, 3, 4, x=100, y=200, z=300)
+
+
+print("========= Call func3(123, 456, 789, x=1, y=2, d=3) =========")
+def func3(a, b, c, **kwargs):
+    print('a =', a)
+    print('b =', b)
+    print('c =', c)
+    print('kwargs =', kwargs)
+    print('kwargs["x"] =', kwargs['x'])
+    print('kwargs["y"] =', kwargs.get('y', -1))
+    print('kwargs["z"] =', kwargs.get('z', -1))
+
+func3(123, 456, 789, x=1, y=2, d=3)
