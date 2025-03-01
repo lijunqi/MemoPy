@@ -1,3 +1,4 @@
+""" nonlocal """
 
 def outer():
     x = 'hello'

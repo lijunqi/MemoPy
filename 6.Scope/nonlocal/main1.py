@@ -1,9 +1,11 @@
 """
-We have to explicitly tell Python we are modifying a nonlocal variable.
-
-Whenever Python is told that a variable is nonlocal
-  * it will look for it in the enclosing local scopes chain until it first encounters the specified vairable name
-  * Beware: It will only look in local scopes, it will NOT look in the global scope
+1. Python create a new scope when function is called.
+2. A variable is local variable if it's assigned in a function.
+3. "global" tell Python this label is point to a global variable.
+4. Whenever Python is told that a variable is nonlocal
+    * it will look for it in the enclosing local scopes chain
+    * until it first encounters the specified vairable name
+    ! Beware: It will only look in local scopes, it will NOT look in the global scope
 """
 
 def outer_func():

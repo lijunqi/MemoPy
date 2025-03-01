@@ -9,13 +9,15 @@ def add(x,y):
         return x+y+z
     return f
 
-d = add(5,6)
-d(9)
-d(1)
-for i in d.__closure__:
-    print("d __closure__:", i.cell_contents)
+fn = add(5,6)
+fn(9)
+fn(1)
+for i in fn.__closure__:
+    print("fn __closure__, cell_contents:", i.cell_contents)
 
 def foo():
     print("this is foo.")
 
 print("foo __closure__:", foo.__closure__)
+
+print("fn free vars: ", fn.__code__.co_freevars)
