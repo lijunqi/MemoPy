@@ -23,9 +23,19 @@ def convert_tz():
     print(time_str)
 
 
+def set_tz():
+    now = datetime.now()
+    ea = pytz.timezone('US/Eastern')
+    now_with_ea_tz = ea.localize(now)
+    print(f"Now   : {now}")
+    print(f"Now EA: {now_with_ea_tz}")
+
+
 if __name__ == "__main__":
     eastern = timezone('US/Eastern')
     print(eastern.zone)
 
     #list_all_tz()
     list_all_common_tz()
+
+    set_tz()
