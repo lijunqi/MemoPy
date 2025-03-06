@@ -1,35 +1,35 @@
+""" 返回闭包时，返回函数不要引用任何循环变量，或者后续会发生变化的变量 """
+
+def count():
+    fs = []
+    for i in range(1, 4):
+        def f():
+             return i*i
+        fs.append(f)
+    return fs
+
+f1, f2, f3 = count()
+print("f1() =", f1()) # 9
+print("f2() =", f2()) # 9
+print("f3() =", f3()) # 9
+
+print("=====================")
 """
-以一个类似棋盘游戏的例子来说明:
-假设棋盘大小为50*50, 左上角为坐标系原点(0,0), 我需要一个函数, 接收2个参数,
-分别为方向(direction), 步长(step), 该函数控制棋子的运动.
-这里需要说明的是, 每次运动的起点都是上次运动结束的终点
+如果一定要引用循环变量怎么办?
+方法是再创建一个函数, 用该函数的参数绑定循环变量当前的值,
+无论该循环变量后续如何更改, 已绑定到函数参数的值不变
 """
+def count2():
+    def f(j):
+        def g():
+            return j*j
+        return g
+    fs = []
+    for i in range(1, 4):
+        fs.append(f(i))  #! f(i)立刻被执行，因此i的当前值被传入f()
+    return fs
 
-"""
-* 在这段代码中, player实际上就是闭包go函数的一个实例对象
-它一共运行了三次,
-第一次是沿X轴前进了10来到[10,0],
-第二次是沿Y轴前进了20来到 [10, 20],
-第三次是反方向沿X轴退了10来到[0, 20]
-"""
-def create(pos=None):
-    if pos is None:
-        pos = [0,0]
-
-    def go(direction, step):
-        new_x = pos[0]+direction[0]*step
-        new_y = pos[1]+direction[1]*step
-        pos[0] = new_x
-        pos[1] = new_y
-        return pos
-
-    return go
-
-def main():
-    player = create()
-    print(player([1,0],10))
-    print(player([0,1],20))
-    print(player([-1,0],10))
-
-if __name__ == "__main__":
-    main()
+f4, f5, f6 = count2()
+print("f4() =", f4()) # 1
+print("f5() =", f5()) # 4
+print("f6() =", f6()) # 9
