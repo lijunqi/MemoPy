@@ -42,10 +42,23 @@ print("y = ", y)
 # ! Positional Arguments
 # * If a positional parameter is defined with a default value,
 # * EVERY positional parameter after it MUST also be given a default value
+print("====== Positional Arguments ======")
+def func1(*args, d):
+    print(f"args = {args}, d = {d}")
+
+func1(1, 2, 3, d=100)
+
+# In fact we can force no positional arguments at all:
+# "*" indicates the "end" of positional arguments
+def func2(*, d):
+    print(f"d = {d}")
+
+func2(d=123)
 
 # ! Keyword Arguments
 # * All arguments after the first named(keyword) argument, MUST be named too.
 # * Default arguments may still be omitted.
+print("====== Keyword Arguments ======")
 
 
 """
