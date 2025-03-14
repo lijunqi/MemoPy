@@ -36,6 +36,6 @@ if __name__ == "__main__":
     print(eastern.zone)
 
     #list_all_tz()
-    list_all_common_tz()
+    #list_all_common_tz()
 
     set_tz()
