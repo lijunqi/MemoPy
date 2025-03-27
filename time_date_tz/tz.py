@@ -1,6 +1,6 @@
-from datetime import datetime, timedelta
+""" Timezone """
+from datetime import datetime, timezone, timedelta
 import pytz
-from pytz import timezone
 
 
 FMT = '%Y-%m-%d %H:%M:%S %Z%z'
@@ -32,10 +32,15 @@ def set_tz():
 
 
 if __name__ == "__main__":
-    eastern = timezone('US/Eastern')
+    eastern = pytz.timezone('US/Eastern')
     print(eastern.zone)
 
     #list_all_tz()
     #list_all_common_tz()
 
     set_tz()
+
+    print("=== astimezone: adjusting date and time ===")
+    utc_now = datetime.now(timezone.utc)
+    print("UTC now:", utc_now)
+    print("Loc now:", utc_now.astimezone(timezone(timedelta(hours=8))))
