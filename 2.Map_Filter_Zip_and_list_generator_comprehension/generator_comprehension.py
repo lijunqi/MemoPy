@@ -42,3 +42,16 @@ def foo2(data):
 my_data = [1,2,3]
 print(foo1(my_data))
 print(foo2(my_data))
+
+
+def double(x):
+    return x * 2
+
+results = (double(x) for x in my_data)
+print("List results:")
+for item in results:
+    print("item:", item)
+
+print("List results again:")
+for item in results:
+    print("item:", item)

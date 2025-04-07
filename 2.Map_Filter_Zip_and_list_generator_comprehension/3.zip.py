@@ -23,7 +23,7 @@ l2 = 'abcd'
 print(list(zip(l1, l2))) # [(0, 'a'), (1, 'b'), (2, 'c'), (3, 'd')]
 
 
-l1 = [1, 2, 3]
+l1 = [1, 2, 3, 4, 5, 6]
 l2 = [10, 20, 30]
 res = [x+y for x, y in zip(l1, l2)] # == list(map(lambda x, y: x + y, l1, l2))
 print(res) # [11, 22, 33]

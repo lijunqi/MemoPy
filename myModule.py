@@ -9,3 +9,11 @@ def double_it(x: int):
     return 2 * x
 
 print("Quit myModule.")
+
+def t():
+    try:
+        return "try"
+    finally:
+        return "finally"
+
+print(t())
