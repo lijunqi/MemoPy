@@ -1,6 +1,7 @@
 import os, json, time
 from rich import print as rprint
 from rich import print_json
+from rich.pretty import pprint
 from rich.console import Console
 from rich.table import Column, Table
 from rich.columns import Columns
@@ -23,11 +24,14 @@ def print_example():
         "d": [1, 2, 3, 4, 5],
         'e': 'done'
     }
+    rprint("====== pprint:\n")
+    pprint(obj, expand_all=True)
+    rprint("====== print_json str:\n")
     json_str = json.dumps(obj)
     print_json(json_str)
 
 def table_example():
-    table = Table(show_header=True, header_style="bold yellow")
+    table = Table(title="Table Example", show_header=True, header_style="bold yellow")
     table.add_column("Date", style="dim", width=12)
     table.add_column("Title")
     table.add_column("Production Budget", justify="right")
@@ -51,11 +55,13 @@ def table_example():
     rprint(table)
 
 def column_example():
-    directory = os.listdir("C:\\")
-    rprint(Columns(directory))
+    #cols = ['col_1_asdfasdfwerwer', 'col_2', 'col_3', 'col_4',
+    #        'col_5_oiueoribkhaksdhfkshkfsh', 'col_6', 'col_7_owihvbnkvjhfgalksfhkajh',
+    #        'col_8', 'col_9', 'col_10', 'col_11_woeihkdhaksdjhfksjhfk', 'col_12']
+    cols = os.listdir("C:\\")
+    rprint(Columns(cols, title="Column Example"))
 
 def syntax_example():
-
     my_code = '''
     def iter_first_last(values: Iterable[T]) -&gt; Iterable[Tuple[bool, bool, T]]:
         """Iterate and generate a tuple with a flag for first and last value."""
@@ -91,7 +97,7 @@ def panel_example():
         Panel("Hello", style="on blue"),
         Panel("World", style="on red"),
     )
-    rprint(Panel(panel_group))
+    rprint(Panel(panel_group, title="Panel Example"))
 
 def tree_example():
     tree = Tree("Rich Tree")
