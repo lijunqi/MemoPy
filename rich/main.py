@@ -1,17 +1,30 @@
-import os
-import time
+import os, json, time
 from rich import print as rprint
+from rich import print_json
 from rich.console import Console
 from rich.table import Column, Table
 from rich.columns import Columns
 from rich.progress import track, Progress
 from rich.syntax import Syntax
+from rich.tree import Tree
 
 
 def print_example():
     print("hello world!")
     print("[italic red]Hello[/italic red] World!", locals())
     rprint("[italic red]Hello[/italic red], [bold magenta]World[/bold magenta]!", ":vampire:", locals())
+    obj = {
+        "a": 123,
+        "b": "hello",
+        "c": {
+            "name": "Tom",
+            "age": 20
+        },
+        "d": [1, 2, 3, 4, 5],
+        'e': 'done'
+    }
+    json_str = json.dumps(obj)
+    print_json(json_str)
 
 def table_example():
     table = Table(show_header=True, header_style="bold yellow")
@@ -68,6 +81,7 @@ def traceback_example():
 def emoji_example():
     rprint(":vampire:")
     rprint(":heart:")
+    rprint(":star:")
 
 def panel_example():
     from rich.console import Group
@@ -78,6 +92,14 @@ def panel_example():
         Panel("World", style="on red"),
     )
     rprint(Panel(panel_group))
+
+def tree_example():
+    tree = Tree("Rich Tree")
+    tree.add("foo")
+    tree.add("bar")
+    baz_tree = tree.add("baz")
+    baz_tree.add("[red]Red").add("[green]Green").add("[blue]Blue")
+    rprint(tree)
 
 def progress_bar_example():
     for step in track(range(1), description="Processing..."):
@@ -110,6 +132,7 @@ if __name__ == "__main__":
     syntax_example()
     emoji_example()
     panel_example()
+    tree_example()
     progress_bar_example()
     multiple_progress_example()
 
