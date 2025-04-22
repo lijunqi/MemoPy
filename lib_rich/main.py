@@ -8,6 +8,7 @@ from rich.columns import Columns
 from rich.progress import track, Progress
 from rich.syntax import Syntax
 from rich.tree import Tree
+from rich.prompt import Prompt, Confirm
 
 
 def print_example():
@@ -24,9 +25,9 @@ def print_example():
         "d": [1, 2, 3, 4, 5],
         'e': 'done'
     }
-    rprint("====== pprint:\n")
+    rprint("====== pprint:")
     pprint(obj, expand_all=True)
-    rprint("====== print_json str:\n")
+    rprint("====== print_json str:")
     json_str = json.dumps(obj)
     print_json(json_str)
 
@@ -81,8 +82,14 @@ def syntax_example():
     rprint(syntax)
 
 def traceback_example():
-    rprint("hello")
-    1/ 0
+    console = Console()
+    try:
+        rprint("hello")
+        a = 123
+        x = 1/ 0
+    except Exception:
+        console.print_exception(show_locals=True)
+        
 
 def emoji_example():
     rprint(":vampire:")
@@ -93,11 +100,13 @@ def panel_example():
     from rich.console import Group
     from rich.panel import Panel
 
+    Panel.fit("[bold yellow]Hi, I'm a Panel", border_style="red")
     panel_group = Group(
         Panel("Hello", style="on blue"),
         Panel("World", style="on red"),
     )
     rprint(Panel(panel_group, title="Panel Example"))
+
 
 def tree_example():
     tree = Tree("Rich Tree")
@@ -108,11 +117,12 @@ def tree_example():
     rprint(tree)
 
 def progress_bar_example():
+    # Basic usage:
     for step in track(range(1), description="Processing..."):
         print(step)
         time.sleep(0.5)
 
-def multiple_progress_example():
+    # Advanced usage: multiple progress
     with Progress() as prog:
         task1 = prog.add_task("[red]Downloading...", total=1000)
         task2 = prog.add_task("[green]Processing...", total=1000)
@@ -129,9 +139,17 @@ def multiple_progress_example():
             if cnt == 2:
                 break
 
+def prompt_example():
+    name = Prompt.ask("Enter your name", choices=["Paul", "Jessica", "Duncan"], default="Tom")
+    rprint(f"Your name is [yellow]{name}")
+
+    is_rich_great = Confirm.ask("Do you like rich?", default="Y")
+    rprint(f"[green]{is_rich_great}")
 
 
 if __name__ == "__main__":
+    console = Console()
+    console.rule("[bold red]Be rich")
     print_example()
     table_example()
     column_example()
@@ -140,6 +158,6 @@ if __name__ == "__main__":
     panel_example()
     tree_example()
     progress_bar_example()
-    multiple_progress_example()
 
-    #traceback_example()
+    traceback_example()
+    prompt_example()
