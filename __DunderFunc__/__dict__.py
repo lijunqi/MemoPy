@@ -1,4 +1,15 @@
 
+class User:
+    def __init__(self):
+        self.name = "Tom"
+        print(self.__dict__)
+        self.age = 12
+        print(self.__dict__)
+        self.male = True
+        print(self.__dict__)
+user = User()
+
+print("======================================")
 class A:
     class_var = 123
     def __init__(self, name, ip) -> None:
@@ -37,6 +48,7 @@ print("type a.d = ", type(d))
 
 ####################################################
 """ 我们需要获取传入的字典的各个键值，并创建键值同名一个属性 """
+print("======================================")
 class B:
     def __init__(self, data) -> None:
         self.data = data
