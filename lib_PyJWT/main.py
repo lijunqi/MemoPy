@@ -11,6 +11,7 @@ def hs256_decode(encoded_text, key):
 
 
 if __name__ == "__main__":
+    # * HS256
     payload = {
         "name": "TOM",
         "age": 123
