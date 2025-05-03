@@ -3,7 +3,7 @@ import threading
 from typing import Annotated, Optional, Union, Dict, Any
 
 from fastapi import FastAPI, Depends, Query, Path, Request, Body
-from model import MyItem
+from my_app.model import MyItem
 
 app = FastAPI()
 

@@ -8,8 +8,12 @@ dependencies = [
     "cron-descriptor>=1.4.5",
     "crontab>=1.0.4",
     "fastapi>=0.115.12",
+    "httpx>=0.28.1",
     "pyjwt[crypto]>=2.10.1",
+    "pymysql>=1.1.1",
+    "pytest>=8.3.5",
     "pytz>=2025.2",
     "requests>=2.32.3",
     "rich>=14.0.0",
+    "sqlalchemy>=2.0.40",
 ]

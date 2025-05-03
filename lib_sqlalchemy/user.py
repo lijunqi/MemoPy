@@ -1,14 +1,14 @@
-from sqlalchemy import Column
+from sqlalchemy import (
+    create_engine,
+    Column, String, Integer,
+    ForeignKey
+)
 from sqlalchemy.types import *
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, declarative_base
 
-BaseModel = declarative_base()
-
-engine = create_engine("mysql+pymysql://root:jacky@127.0.0.1/test", echo=False)
-
-DBSession = sessionmaker(bind=engine)
+Base = declarative_base()
+ENGINE = create_engine("mysql+pymysql://root:jacky@127.0.0.1/test", echo=False)
+DBSession = sessionmaker(bind=ENGINE)
 
 '''
 Create database
@@ -22,16 +22,16 @@ Create database
 '''
 Create table
 '''
-class User(BaseModel):
+class User(Base):
     __tablename__ = "user1"  # table name
     user_name = Column(CHAR(30), primary_key=True)
     age = Column(SMALLINT(), server_default="10")
 
 def init_db():
-    BaseModel.metadata.create_all(engine)
+    Base.metadata.create_all(ENGINE)
 
 def drop_db():
-    BaseModel.metadata.drop_all(engine)
+    Base.metadata.drop_all(ENGINE)
 
 drop_db()
 init_db()
@@ -69,6 +69,7 @@ print(user.age)
 '''
 Delete
 '''
+print(f"{'Delete':=^20}")
 query = session.query(User)
 user = query.get("jerry")
 session.delete(user)
@@ -77,12 +78,12 @@ session.commit()
 '''
 Execute SQL
 '''
-sql_cmd = "select * from user1"
-res = session.execute(sql_cmd)
-print("-----------------")
-for user in res:
-    print(user.user_name)
-    print(user.age)
+#sql_cmd = "select * from user1"
+#res = session.execute(sql_cmd)
+#print("-----------------")
+#for user in res:
+#    print(user.user_name)
+#    print(user.age)
 
 
 session.close()
