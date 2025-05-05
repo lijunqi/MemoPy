@@ -1,0 +1,1 @@
+cls && uv run pytest -s

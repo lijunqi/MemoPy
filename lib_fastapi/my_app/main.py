@@ -4,6 +4,7 @@ from typing import Annotated, Optional, Union, Dict, Any
 
 from fastapi import FastAPI, Depends, Query, Path, Request, Body
 from my_app.model import MyItem
+from my_app.helper import other_server
 
 app = FastAPI()
 
@@ -56,7 +57,9 @@ def read_items(commons: Annotated[dict, Depends(common_parameters)]):
     return commons
 
 
-def check_admin(uid: int=0):
+# ~ 从路径参数中获得uid
+def check_admin(uid: int=Path()):
+    print("====> uid: ", uid)
     if uid == 1:
         return {"is_admin": True}
     else:
@@ -65,9 +68,9 @@ def check_admin(uid: int=0):
 
 
 # * 路径参数(用Path校验,元数据):
-@app.get("/users/{user_id}")
-def read_users(user_id: int, commons: Annotated[dict, Depends(check_admin)]):
-    print("req: user_id: ", user_id)
+@app.get("/users/{uid}")
+def read_users(uid: int, commons: Annotated[dict, Depends(check_admin)]):
+    print("req: uid: ", uid)
     if commons['is_admin']:
         print("It is admin.")
     else:
