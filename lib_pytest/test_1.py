@@ -29,7 +29,7 @@ def test_name_length1(mocker):
 def test_name_length2(mocker):
     mocker.patch('os.path.isfile', return_value=True)
 #    mock_print = mocker.patch('builtins.print', wraps=print)
-    print "--------: " +__name__
+    print("--------: ", __name__)
     mock_len = mocker.patch(__name__ + '.len', wraps=len)
     assert 4 == name_length('test')
 #    assert mock_print.called
