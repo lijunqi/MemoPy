@@ -99,3 +99,33 @@ my_iter = iter(my_class)
 print("Next 1: ", next(my_iter))
 print("Next 2: ", next(my_iter))
 print("Next 3: ", next(my_iter))
+
+
+print("====================== MyList =====================")
+class MyList(list):
+    def __init__(self, lst: list):
+        self._lst = []
+        for i in lst:
+            self._lst.append(i + 2)
+
+    def __iter__(self):
+        # for each
+        print('__iter__ called')
+        return self._lst.__iter__()
+
+    def __next__(self):
+        print('__next__ called')
+        return self._lst.__next__()
+
+    def __getitem__(self, index):
+        # [] operator
+        print('__getitem__ called')
+        return self._lst[index]
+
+my_lst = MyList([1, 2, 3])
+for i in my_lst:
+    print(f"i = {i}")
+
+print(my_lst[0])
+print(my_lst[1])
+print(my_lst[2])
