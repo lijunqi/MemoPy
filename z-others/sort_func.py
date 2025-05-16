@@ -1,11 +1,11 @@
 from functools import cmp_to_key
 
 class Student():
-    def __init__(self, number):
-        self.num = number
+    def __init__(self, level):
+        self.lv = level
 
     def __repr__(self):
-        return f"Student_{self.num}"
+        return f"Student_{self.lv}"
 
 
 print("########################### 1 ###########################")
@@ -19,7 +19,7 @@ s6 = Student(6)
 all_students = [s2, s3, s1, s5, s6, s4]
 print("Before sort: ", all_students)
 
-all_students.sort(key=lambda x: x.num, reverse=True)
+all_students.sort(key=lambda x: x.lv, reverse=True)
 print("After sort: ")
 for stu in all_students:
     print(stu)
@@ -27,9 +27,9 @@ for stu in all_students:
 
 print("########################### 2 ###########################")
 def comparator(lhs, rhs):
-    if lhs.num < rhs.num:
+    if lhs.lv < rhs.lv:
         return -1
-    elif lhs.num > rhs.num:
+    elif lhs.lv > rhs.lv:
         return 1
     else:
         return 0
