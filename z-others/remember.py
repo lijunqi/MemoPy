@@ -67,11 +67,11 @@ g_cnt = 5
 print('########################### %d ###########################' % g_cnt)
 # checks whether the string consists of alphanumeric characters
 # --- isdigit(), isalpha() ---
-str = "runoob2016"
-print (str.isalnum()) # True
+s = "runoob2016"
+print (s.isalnum()) # True
  
-str = "www.runoob.com"
-print (str.isalnum()) # False
+s = "www.runoob.com"
+print (s.isalnum()) # False
 
 def isPalindrome(s: str) -> bool:
     # Best ans:
