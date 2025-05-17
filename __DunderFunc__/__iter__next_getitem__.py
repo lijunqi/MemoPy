@@ -126,6 +126,15 @@ my_lst = MyList([1, 2, 3])
 for i in my_lst:
     print(f"i = {i}")
 
-print(my_lst[0])
-print(my_lst[1])
-print(my_lst[2])
+print(f"{my_lst[0] = }")
+print(f"{my_lst[1] = }")
+print(f"{my_lst[2] = }")
+
+
+class Person:
+    def __getitem__(self, val):
+        return f'__getitem__({val}) called.'
+
+p = Person()
+print(f"{p['some value'] = }")
+print(f"{getattr(p, 'val', None) = }")
