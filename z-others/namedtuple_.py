@@ -1,4 +1,6 @@
 from collections import namedtuple
+from typing import Any
+from dataclasses import dataclass
 
 Point = namedtuple('AAA', 'x y')
 pt1 = Point(1.0, 5.0)
@@ -11,8 +13,6 @@ print(pt1) # AAA(x=1.0, y=5.0)
 
 
 #######################################
-from dataclasses import dataclass
-from typing import Any
 
 @dataclass
 class MyNode:
