@@ -1,13 +1,30 @@
-import pytest
+from pytest import fixture
 
-@pytest.fixture
+@fixture
 def my_fixture():
     print("This is my fixture.")
     return 123
 
-#@pytest.fixture(scope="session") # only "teardown" once
-@pytest.fixture(scope="function")
+#@fixture(scope="session") # only "teardown" once
+@fixture(scope="function")
 def fixture_with_teardown():
     print("This is second fixture.")
     yield 456
     print("======> Teardown second fixture.")
+
+
+"""
+    pytest --env=xxx
+"""
+def pytest_addoption(parser):
+    parser.addoption(
+        "--env",
+        action="store",
+        help="Environment to run my test"
+    )
+
+@fixture(scope="session")
+def env(request):
+    res = request.config.getoption("--env")
+    print("... In env ... : ", res)
+    return res
