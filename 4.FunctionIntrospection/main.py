@@ -3,8 +3,8 @@
 def my_func1(a, b=2, c=3, *, kw1, kw2=2):
     pass
 
-print("my_func1.__name__: ", my_func1.__name__) # my_func1
-print("my_func1.__defaults__: ", my_func1.__defaults__) # (2, 3)
+print("my_func1.__name__: "      , my_func1.__name__      ) # my_func1
+print("my_func1.__defaults__: "  , my_func1.__defaults__  ) # (2, 3)
 print("my_func1.__kwdefaults__: ", my_func1.__kwdefaults__) # {'kw2': 2}
 
 def my_func2(a, b=1, *args, **kwargs):

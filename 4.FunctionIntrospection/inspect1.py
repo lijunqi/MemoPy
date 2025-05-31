@@ -8,7 +8,6 @@ from inspect import (
 )
 import main
 
-# TODO: todo my func
 def my_func():
     pass
 

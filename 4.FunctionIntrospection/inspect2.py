@@ -1,28 +1,45 @@
 from inspect import signature
 
 def my_func(
-        a,
-        b: int = 1,
-        c=2,
-        *args,
-        kw1,
-        kw2=100,
-        kw3=200,
-        **kwargs) -> None:
+        a,           # positional or keyword
+        b: str = '', # positional or keyword
+        c='cc',      # positional or keyword
+        *args,       # var positional
+        kw1,         # keyword only
+        kw2=100,     # keyword only
+        kw3=200,     # keyword only
+        **kwargs     # var_keyword
+    ) -> None:
     """ This function does nothing but does have various parameters and annotations. """
     i = 10
     j = 20
+    print("=== Show all variables and their values: ===")
+    for var in my_func.__code__.co_varnames:
+        print(f"{var} = {eval(var)}")
+    print("Type of kwargs:", type(kwargs)) # 3
 
-print("my_func.__name__        : ", my_func.__name__) # my_func
-print("my_func.__doc__         : ", my_func.__doc__)
+my_func('a', 'b', 'c', kw1=1, kw2=2, kw3=3, x=123, y=456, z=789)
+
+
+print("========= Function props =========")
+print("my_func.__name__        : ", my_func.__name__       ) # my_func
+print("my_func.__doc__         : ", my_func.__doc__        )
 print("my_func.__annotations__ : ", my_func.__annotations__) # {'b': <class 'int'>, 'return': None}
-print("my_func.__defaults__    : ", my_func.__defaults__)    # (1, 2)
-print("my_func.__kwdefaults__  : ", my_func.__kwdefaults__)  # {'kw2': 100, 'kw3': 200}
+print("my_func.__defaults__    : ", my_func.__defaults__   ) # (1, 2)
+print("my_func.__kwdefaults__  : ", my_func.__kwdefaults__ ) # {'kw2': 100, 'kw3': 200}
 
-print("my_func.__code__.co_name    : ", my_func.__code__.co_name) # my_func
-print("my_func.__code__.co_varnames: ", my_func.__code__.co_varnames) # ('a', 'b', 'c', 'kw1', 'kw2', 'kw3', 'args', 'kwargs', 'i', 'j')
-print("my_func.__code__.co_argcount: ", my_func.__code__.co_argcount) # 3
+print("my_func.__code__.co_name    : ", my_func.__code__.co_name    ) # my_func
 
+print("my_func.__code__.co_varnames: ", my_func.__code__.co_varnames)
+# ('a', 'b', 'c', 'kw1', 'kw2', 'kw3', 'args', 'kwargs', 'i', 'j')
+
+print("my_func.__code__.co_argcount       : ", my_func.__code__.co_argcount       ) # 3
+print("my_func.__code__.co_posonlyargcount: ", my_func.__code__.co_posonlyargcount) # 0
+print("my_func.__code__.co_kwonlyargcount : ", my_func.__code__.co_kwonlyargcount ) # 3
+
+
+
+print("========= Signature =========")
 sig = signature(my_func)
 print("sig type: ", type(sig)) # <class 'inspect.Signature'>
 print("sig.parameters type: ", type(sig.parameters)) # <class 'mappingproxy'>

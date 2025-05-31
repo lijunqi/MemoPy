@@ -36,18 +36,24 @@ def func(*args, **kwargs)
 """
 
 def func(*args, **kwargs):
-    print('args = ', args)
-    print('kwargs = ', kwargs)
+    print('args =', args)
+    print('kwargs =', kwargs)
 
 
 func(1, 2, a=10, b=20)
+# Output:
 # args = (1, 2)
 # kwargs = {'a': 10, 'b': 20}
 
 
 func()
+# Output:
 # args = ()
 # kwargs = {}
+
+func(1, 2, 3, 4, 5)
+# Output:
+# args = (1, 2, 3, 4, 5)
 
 
 print("========= Call func1(1, 2, x=100, y=200, d=20) =========")
