@@ -1,0 +1,1 @@
+uv run uvicorn my_app.main:app --reload
