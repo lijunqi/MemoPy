@@ -105,10 +105,8 @@ def read_elements(
     return {"q": q, "skip": skip, "limit": limit}
 
 
-@app.post("/items/")
+@app.post("/my_item/")
 def create_item(item: MyItem):
     print(">>> Create item: ", item)
     print("item name: ", item.name)
     return item
-
-

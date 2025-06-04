@@ -34,3 +34,49 @@ print("3. This is response: ", process(response))
 
 response = [1,2,3]
 print("4. This is response: ", process(response))
+
+
+from pydantic import BaseModel
+
+class A(BaseModel):
+    name: str
+    age: int
+
+class C(BaseModel):
+    name: str
+    age: int
+class B(A):
+    number: int
+    description: str
+
+@overload
+def do_work(item: A):
+    ...
+
+def do_work(item: B):
+    print(item)
+
+a = A(name="Tom", age=123)
+do_work(a)
+b = B(name="Jerry", age=11, number=22, description="This is Jerry")
+do_work(b)
+
+
+class Duck:
+
+    @overload
+    def quack(self) -> None: ...
+
+    @overload
+    def quack(self, mark: str) -> None: ...
+
+    # 以上两个方法最终会被这个方法覆盖掉
+    def quack(self, arg=None):
+        if arg:
+            print(f"GaGaGa: {arg}")
+        else:
+            print("GaGaGa!")
+
+d = Duck()
+d.quack()                   # Output: GaGaGa!
+d.quack("This is a duck~")  # Output: GaGaGa: This is a duck~
