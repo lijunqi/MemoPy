@@ -95,3 +95,16 @@ def func3(a, b, c, **kwargs):
     print('kwargs["z"] =', kwargs.get('z', -1))
 
 func3(123, 456, 789, x=1, y=2, d=3)
+
+
+print("========= Call func4(*, a, **kwargs) =========")
+def func4(*, a, **kwargs):
+    print('a =', a)
+    print('kwargs =', kwargs)
+
+func4(a=10, b=20, c=30)
+# Output:
+# a = 10
+# kwargs = {'b': 20, 'c': 30}
+
+# ! func4(b=20, c=30, d=40) # ! TypeError: func4() missing 1 required keyword-only argument: 'a'
