@@ -25,3 +25,8 @@ members = [
     "99.Lib/Pydantic",
     "99.Lib/Pydantic2",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.12.1",
+]

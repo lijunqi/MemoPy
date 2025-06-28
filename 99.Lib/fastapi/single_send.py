@@ -17,7 +17,7 @@ if __name__ == "__main__":
         "name": "Foo",
         "description": "An optional description",
         "price": 45.2,
-        "tax": 3.5
+        "tax": 3.5,
     }
     send_post(f"{URL}/items/", item1)
 

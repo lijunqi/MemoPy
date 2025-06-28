@@ -8,6 +8,6 @@ class MyItem(BaseModel):
         default=None,
         description="An optional description of the item",
     )
-    #description: str | None = None
+    # description: str | None = None
     price: float = Field(description="Price is required!!!")
     tax: float = Field(default=1.23)

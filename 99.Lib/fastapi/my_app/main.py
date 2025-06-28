@@ -9,8 +9,8 @@ from my_app.helper import other_server
 app = FastAPI()
 
 
-#@app.get("/")
-#async def read_root():
+# @app.get("/")
+# async def read_root():
 #    print(f"[{time.strftime('%x')}]Get request.")
 ##    time.sleep(2)
 #    await asyncio.sleep(2)
@@ -18,8 +18,8 @@ app = FastAPI()
 #    return {"Hello": "World"}
 
 
-#@app.get("/sync/{item_id}")
-#def sync_read_item(item_id: int, payload: dict=Body()):
+# @app.get("/sync/{item_id}")
+# def sync_read_item(item_id: int, payload: dict=Body()):
 #    # * This is Mulitiple threads handler, time.sleep(n) will handle concurrently.
 #    print('[Sync_Receive]thread id: ', threading.current_thread().ident, f'item_id: {item_id}')
 #    print(type(payload), payload)
@@ -28,11 +28,15 @@ app = FastAPI()
 ##    print(req.body())
 #    return {"item_id": item_id}
 
+
 @app.get("/ping/{delay}")
 def ping(delay: int):
     # * This is async handler, time.sleep(n) will block, not concurrently.
-    print(f"[{time.strftime('%X')}](Async_Receive)thread id: ",
-            threading.current_thread().ident, f'delay: {delay}')
+    print(
+        f"[{time.strftime('%X')}](Async_Receive)thread id: ",
+        threading.current_thread().ident,
+        f"delay: {delay}",
+    )
     time.sleep(int(delay))
     return {"delay": delay}
 
@@ -47,6 +51,8 @@ def ping(delay: int):
 
 该函数接收的参数和路径操作函数的参数一样
 """
+
+
 def common_parameters(q: str | None = None, skip: int = 0, limit: int = 100):
     print(f">>> common_parameters: q = {q}, skip = {skip}, limit = {limit}")
     return {"q": q, "skip": skip, "limit": limit}
@@ -58,7 +64,7 @@ def read_items(commons: Annotated[dict, Depends(common_parameters)]):
 
 
 # ~ 从路径参数中获得uid
-def check_admin(uid: int=Path()):
+def check_admin(uid: int = Path()):
     print("====> uid: ", uid)
     if uid == 1:
         return {"is_admin": True}
@@ -71,18 +77,17 @@ def check_admin(uid: int=Path()):
 @app.get("/users/{uid}")
 def read_users(uid: int, commons: Annotated[dict, Depends(check_admin)]):
     print("req: uid: ", uid)
-    if commons['is_admin']:
+    if commons["is_admin"]:
         print("It is admin.")
     else:
         print("It is NOT admin.")
     return commons
 
+
 @app.get("/items/{item_id}")
 def read_item_by_id(
     item_id: int = Path(
-        title="The ID of the item to get",
-        description="A ID >= 1",
-        ge=1
+        title="The ID of the item to get", description="A ID >= 1", ge=1
     ),
     q: str | None = Query(default=None, alias="item-query"),
 ):
@@ -98,10 +103,10 @@ def read_item_by_id(
 # * q 是可选的，但只要提供了该参数，则该参数值的字符长度为[3,10]之间
 @app.get("/elements/")
 def read_elements(
-    q: str=Query(default="fixQ", min_length=3, max_length=10),
-    skip: int=0,
-    limit: int=10
-    ):
+    q: str = Query(default="fixQ", min_length=3, max_length=10),
+    skip: int = 0,
+    limit: int = 10,
+):
     return {"q": q, "skip": skip, "limit": limit}
 
 
