@@ -1,4 +1,4 @@
-from typing import Any, TypeVar
+from typing import Any, TypeVar, Final
 
 # ! type of number is Any, not very meaningful
 def identity(arg: Any) -> Any:
@@ -31,3 +31,14 @@ def triple(string: AnyString) -> AnyString:
 unicode_scream = triple("A") + "!"
 bytes_scream = triple(b"A") + b"!"
 print(unicode_scream, bytes_scream)
+
+
+# * Cannot be re-assigned or overridden in a subclass
+MAX_SIZE: Final = 9000
+MAX_SIZE += 1  # Error reported by type checker
+
+class Connection:
+    TIMEOUT: Final[int] = 10
+
+class FastConnector(Connection):
+    TIMEOUT = 1  # Error reported by type checker
