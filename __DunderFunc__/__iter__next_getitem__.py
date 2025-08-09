@@ -193,6 +193,11 @@ class MyUserList(UserList):
             print(f"Hello {u}!")
 
 my_user_list = MyUserList(['Tom', 'Jerry', 'Mike'])
+print("for 1:")
+for u in my_user_list:
+    print(f"user = {u}")
+
+print("for 2:")
 for u in my_user_list:
     print(f"user = {u}")
 
