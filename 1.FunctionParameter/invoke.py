@@ -1,11 +1,11 @@
-
 def extendList(val, list=[]):
     list.append(val)
     return list
 
+
 list1 = extendList(10)
-list2 = extendList(123,[])
-list3 = extendList('a')
+list2 = extendList(123, [])
+list3 = extendList("a")
 
 print("list1 = ", list1)
 print("list2 = ", list2)
@@ -18,15 +18,17 @@ list2 = [123]
 list3 = [10, 'a']
 """
 
+
 def extendList2(val, list=None):
     if list is None:
         list = []
         list.append(val)
     return list
 
+
 list4 = extendList2(10)
-list5 = extendList2(123,[])
-list6 = extendList2('a')
+list5 = extendList2(123, [])
+list6 = extendList2("a")
 
 print("list4 = ", list4)
 print("list5 = ", list5)

@@ -35,9 +35,10 @@ def func(*args, **kwargs)
 
 """
 
+
 def func(*args, **kwargs):
-    print('args =', args)
-    print('kwargs =', kwargs)
+    print("args =", args)
+    print("kwargs =", kwargs)
 
 
 func(1, 2, a=10, b=20)
@@ -57,50 +58,63 @@ func(1, 2, 3, 4, 5)
 
 
 print("========= Call func1(1, 2, x=100, y=200, d=20) =========")
+
+
 def func1(a, b, *, d, **kwargs):
-    print('a =', a)
-    print('b =', b)
-    print('d =', d)
+    print("a =", a)
+    print("b =", b)
+    print("d =", d)
     # ! x, y in kwargs: kwargs = {'x': 100, 'y': 200}
-    print('kwargs =', kwargs)
+    print("kwargs =", kwargs)
+
 
 func1(1, 2, x=100, y=200, d=20)
 
 
 print("========= Call func2(1, 2, 3, 4, x=100, y=200, d=20) =========")
+
+
 def other_func(a, b):
-    print('other func, a =', a)
-    print('other func, b =', b)
-    print('type b =', type(b))
+    print("other func, a =", a)
+    print("other func, b =", b)
+    print("type b =", type(b))
+
 
 def func2(*args, **kwargs):
-    print('args =', args)
-    print('kwargs =', kwargs)
-    print('x = ', kwargs.get('x'))
-    print('y = ', kwargs.get('y'))
+    print("args =", args)
+    print("kwargs =", kwargs)
+    print("x = ", kwargs.get("x"))
+    print("y = ", kwargs.get("y"))
     other_func(1, args)
     other_func(2, kwargs)
+
 
 func2(1, 2, 3, 4, x=100, y=200, z=300)
 
 
 print("========= Call func3(123, 456, 789, x=1, y=2, d=3) =========")
+
+
 def func3(a, b, c, **kwargs):
-    print('a =', a)
-    print('b =', b)
-    print('c =', c)
-    print('kwargs =', kwargs)
-    print('kwargs["x"] =', kwargs['x'])
-    print('kwargs["y"] =', kwargs.get('y', -1))
-    print('kwargs["z"] =', kwargs.get('z', -1))
+    print("a =", a)
+    print("b =", b)
+    print("c =", c)
+    print("kwargs =", kwargs)
+    print('kwargs["x"] =', kwargs["x"])
+    print('kwargs["y"] =', kwargs.get("y", -1))
+    print('kwargs["z"] =', kwargs.get("z", -1))
+
 
 func3(123, 456, 789, x=1, y=2, d=3)
 
 
 print("========= Call func4(*, a, **kwargs) =========")
+
+
 def func4(*, a, **kwargs):
-    print('a =', a)
-    print('kwargs =', kwargs)
+    print("a =", a)
+    print("kwargs =", kwargs)
+
 
 func4(a=10, b=20, c=30)
 # Output:
