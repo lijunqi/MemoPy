@@ -21,6 +21,7 @@ def process(response: bytes) -> str:
 
 # * Be ignored by type checker
 def process(response):
+    # actual implementation goes here
     return response
 
 response = None
@@ -50,16 +51,27 @@ class B(A):
     description: str
 
 @overload
-def do_work(item: A):
+def do_work(item: A) -> None:
     ...
 
-def do_work(item: B):
+@overload
+def do_work(item: B) -> None:
     print(item)
+
+def do_work(item):
+    if type(item) == A:
+        print("This is A item: ", item.name)
+    elif type(item) == B:
+        print("This is B item: ", item.name)
+    else:
+        print("This is ? item: ", item)
 
 a = A(name="Tom", age=123)
 do_work(a)
 b = B(name="Jerry", age=11, number=22, description="This is Jerry")
 do_work(b)
+
+do_work("???")
 
 
 class Duck:
