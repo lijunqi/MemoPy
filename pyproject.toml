@@ -7,10 +7,9 @@ requires-python = ">=3.12"
 dependencies = [
     "cron-descriptor>=1.4.5",
     "crontab>=1.0.4",
-    "fastapi==0.115.13",
+    "fastapi[standard]>=0.121.0",
     "httpx>=0.28.1",
     "jupyter>=1.1.1",
-    "pydantic>=1.10.22",
     "pyjwt[crypto]>=2.10.1",
     "pymysql>=1.1.1",
     "pytest>=8.3.5",
@@ -21,11 +20,6 @@ dependencies = [
     "sqlalchemy>=2.0.40",
 ]
 
-[tool.uv.workspace]
-members = [
-    "99.Lib/Pydantic",
-    "99.Lib/Pydantic2",
-]
 
 [dependency-groups]
 dev = [
