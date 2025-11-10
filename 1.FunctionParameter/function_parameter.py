@@ -122,3 +122,15 @@ func4(a=10, b=20, c=30)
 # kwargs = {'b': 20, 'c': 30}
 
 # ! func4(b=20, c=30, d=40) # ! TypeError: func4() missing 1 required keyword-only argument: 'a'
+
+print("========= Call func5(a, b, c=123, **kwargs) =========")
+def func5(a, b, c=123, **kwargs):
+    print("a =", a)
+    print("b =", b)
+    print("c =", c)
+    print("kwargs =", kwargs)
+    print('kwargs["x"] =', kwargs["x"])
+    print('kwargs["y"] =', kwargs.get("y", -1))
+    print('kwargs["z"] =', kwargs.get("z", -1))
+
+func5(123, 456, x=1, y=2, d=3)
